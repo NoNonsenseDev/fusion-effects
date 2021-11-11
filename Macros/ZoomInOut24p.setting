@@ -1,0 +1,90 @@
+{
+	Tools = ordered() {
+		ZoomInOut24p = MacroOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Pivot",
+					Name = "ZoomTo",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "AnimCurves1",
+					Source = "EaseIn",
+					Name = "In",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "AnimCurves1",
+					Source = "EaseOut",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "AnimCurves1",
+					Source = "Scale",
+					Default = 1,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Transform1 = Transform {
+					CtrlWZoom = false,
+					Inputs = {
+						MotionBlur = Input { Value = 1, },
+						Quality = Input { Value = 5, },
+						ShutterAngle = Input { Value = 360, },
+						SampleSpread = Input { Value = 2, },
+						Size = Input {
+							SourceOp = "AnimCurves1",
+							Source = "Value",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 445.333, 51.606 } },
+				},
+				AnimCurves1 = LUTLookup {
+					CtrlWZoom = false,
+					Inputs = {
+						Source = Input { Value = FuID { "Custom" }, },
+						Input = Input {
+							SourceOp = "AnimCurvesonTransform1Input",
+							Source = "Value",
+						},
+						Curve = Input { Value = FuID { "Easing" }, },
+						EaseIn = Input { Value = FuID { "Quint" }, },
+						EaseOut = Input { Value = FuID { "Quint" }, },
+						Lookup = Input {
+							SourceOp = "AnimCurves1Lookup",
+							Source = "Value",
+						},
+						Mirror = Input { Value = 1, },
+						Offset = Input { Value = 1, },
+					},
+				},
+				AnimCurvesonTransform1Input = BezierSpline {
+					SplineColor = { Red = 225, Green = 0, Blue = 225 },
+					KeyFrames = {
+						[0] = { 0, RH = { 10, 0.333333333333333 }, Flags = { Linear = true } },
+						[24] = { 1, LH = { 20, 0.666666666666667 }, Flags = { Linear = true } }
+					}
+				},
+				AnimCurves1Lookup = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 255, Green = 255, Blue = 255 },
+				}
+			},
+		}
+	},
+	ActiveTool = "ZoomInOut24p"
+}
