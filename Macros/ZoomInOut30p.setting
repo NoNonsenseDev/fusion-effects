@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		Zoom1 = MacroOperator {
+		ZoomInOut30p = MacroOperator {
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1",
@@ -40,16 +40,13 @@
 						MotionBlur = Input { Value = 1, },
 						Quality = Input { Value = 5, },
 						ShutterAngle = Input { Value = 360, },
-						Pivot = Input {
-							SourceOp = "Publish1",
-							Source = "Value",
-						},
+						SampleSpread = Input { Value = 2, },
 						Size = Input {
 							SourceOp = "AnimCurves1",
 							Source = "Value",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 322, 51.6061 } },
+					ViewInfo = OperatorInfo { Pos = { 445.333, 51.606 } },
 				},
 				AnimCurves1 = LUTLookup {
 					CtrlWZoom = false,
@@ -60,8 +57,8 @@
 							Source = "Value",
 						},
 						Curve = Input { Value = FuID { "Easing" }, },
-						EaseIn = Input { Value = FuID { "Expo" }, },
-						EaseOut = Input { Value = FuID { "Expo" }, },
+						EaseIn = Input { Value = FuID { "Quint" }, },
+						EaseOut = Input { Value = FuID { "Quint" }, },
 						Lookup = Input {
 							SourceOp = "AnimCurves1Lookup",
 							Source = "Value",
@@ -71,8 +68,7 @@
 					},
 				},
 				AnimCurvesonTransform1Input = BezierSpline {
-					SplineColor = { Red = 225, Green = 0, Blue = 157 },
-					NameSet = true,
+					SplineColor = { Red = 225, Green = 0, Blue = 225 },
 					KeyFrames = {
 						[0] = { 0, RH = { 10, 0.333333333333333 }, Flags = { Linear = true } },
 						[30] = { 1, LH = { 20, 0.666666666666667 }, Flags = { Linear = true } }
@@ -90,5 +86,5 @@
 			},
 		}
 	},
-	ActiveTool = "Zoom1"
+	ActiveTool = "ZoomInOut30p"
 }
