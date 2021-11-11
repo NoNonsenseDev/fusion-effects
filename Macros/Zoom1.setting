@@ -9,7 +9,7 @@
 				Input1 = InstanceInput {
 					SourceOp = "Transform1",
 					Source = "Pivot",
-					Name = "ZoomToLocation",
+					Name = "ZoomTo",
 				},
 				Input2 = InstanceInput {
 					SourceOp = "AnimCurves1",
@@ -37,6 +37,13 @@
 				Transform1 = Transform {
 					CtrlWZoom = false,
 					Inputs = {
+						MotionBlur = Input { Value = 1, },
+						Quality = Input { Value = 5, },
+						ShutterAngle = Input { Value = 360, },
+						Pivot = Input {
+							SourceOp = "Publish1",
+							Source = "Value",
+						},
 						Size = Input {
 							SourceOp = "AnimCurves1",
 							Source = "Value",
@@ -65,6 +72,7 @@
 				},
 				AnimCurvesonTransform1Input = BezierSpline {
 					SplineColor = { Red = 225, Green = 0, Blue = 157 },
+					NameSet = true,
 					KeyFrames = {
 						[0] = { 0, RH = { 10, 0.333333333333333 }, Flags = { Linear = true } },
 						[30] = { 1, LH = { 20, 0.666666666666667 }, Flags = { Linear = true } }
