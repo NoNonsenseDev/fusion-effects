@@ -5,6 +5,8 @@ FUSION_EFFECTS_DIR := $(FUSION_DIR)/Templates/Edit/Effects
 .PHONY: install
 
 install:
+	@echo Installing Fusion effects...
 	@mkdir -p "$(FUSION_EFFECTS_DIR)"
 	@cp -R Macros "$(FUSION_DIR)"
 	@fd -t f .*setting "$(FUSION_DIR)/Macros/" -x ln -sf '{}' '{//}/../Templates/Edit/Effects/{/}'
+	@echo Done
